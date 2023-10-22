@@ -86,22 +86,90 @@ const titles = [
 
 
 //Array of authors and the book they wrote
+const bookwriters = books.map((books) => ({
+  authorFirst: books.authorFirst,
+  authorLast: books.authorLast,
+  name: books.name,
+}));
+console.log(bookwriters);
 
+const bookgenres = books.map((books) => ({
+  name: books.name,
+  genre: books.genre
+}));
+console.log(bookgenres)
 //"--- wrote --- in ---"
 books.forEach((books) => console.log(books.authorFirst + " " + books.authorLast + " wrote " + books.name + " in " + books.publishDate)); 
 //Sort books from oldest to most recent 
+const bookyears = books.sort(function(book1, book2){
+  return book2.publishDate - book1.publishDate
+});
+console.log(bookyears);
+
 
 //sort books alphabetically
-
+const sortedbooks = books.map((books) => ({
+  name: books.name,
+}));
+const booktitles = sortedbooks.sort(function(book1, book2){
+  return book1.name.localeCompare(book2.name)
+});
+console.log(sortedbooks);
 //Find who wrote War and Peace
-const warandpeace = books.filter((creator) => creator.authorFirst === "Leo");
-console.log(warandpeace.authorFirst);
+const wp = books.filter((book) => book.name === "War and Peace");
+const wpauthor = wp.map((wp) => ({
+  authorFirst: wp.authorFirst,
+  authorLast: wp.authorLast,
+}));
+console.log(wpauthor)
 //how many books were written before 1900?
-
+const bf1900 = books.filter((book) => book.publishDate < 1900);
+const countbooks = bf1900.length;
+console.log(countbooks + " books were written before 1900.");
 //was there at least one book published within the last 100 years?
-
+const last100 = books.filter((book) => book.publishDate >= 1923);
+const checkbooks = last100.length;
+console.log(checkbooks + " books were written in the last 100 years.")
 //was every book published within the last 100 years?
-
+const pre100 = books.filter((book) => book.publishDate < 1923);
+const datecheck = pre100.length;
+function bookcompare(datecheck){
+  if (datecheck = 10) {
+    console.log('Yes, every book was published in the last 100 years.');
+  } else {
+    console.log('No.');
+  } 
+  return(bookcompare);
+}
 //print a list of books that "includes" the genre historical
-const historicals = books.filter((book) => book.genre === "historical");
+const historicals = books.filter((book) => book.genre = "historical");
 console.log(historicals);
+historicals.forEach((book) => console.log(book.name));
+const authornames = books.map((books) => ({
+  authorLast: books.authorLast,
+}));
+const sortedauthors = authornames.sort(function(book1, book2){
+  return book1.authorLast.localeCompare(book2.authorLast);
+});
+console.log(sortedauthors);
+
+const reviewedbooks = books.map((books) => ({
+  name: books.name,
+  authorFirst: books.authorFirst,
+  authorLast: books.authorLast,
+  publishDate: books.publishDate,
+  genre: books.genre,
+}));
+reviewedbooks.pop;
+console.log(reviewedbooks);
+
+const arraywithmark = books.map((books) => ({
+ name: books.name + "?"
+}));
+console.log(arraywithmark);
+
+const newArr = books.concat(arraywithmark);
+console.log(newArr);
+
+const books1950 = books.filter((book) => book.publishDate > 1950);
+console.log(books1950);
