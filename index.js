@@ -173,3 +173,22 @@ console.log(newArr);
 
 const books1950 = books.filter((book) => book.publishDate > 1950);
 console.log(books1950);
+
+const publishDates = books.map((books) => ({
+  publishDate: books.publishDate
+}));
+
+const sorteddates = publishDates.sort(function(book1, book2){
+  return book1.publishDate - book2.publishDate
+});
+console.log (sorteddates);
+
+
+
+books.filter(book => book.name.startsWith("T"))
+  .forEach(book => {
+    console.log(book.name);
+  });
+
+const before1940 = books.filter((book) => book.publishDate < 1940)
+console.log(before1940)
